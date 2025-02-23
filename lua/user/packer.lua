@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
 
   use 'martinsione/darkplus.nvim'
 
-  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '69388e8' }
   use('theprimeagen/harpoon')
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
@@ -86,5 +86,37 @@ use {
 use {"akinsho/toggleterm.nvim", tag = '*', config = function()
   require("toggleterm").setup()
 end}
+
+use "sindrets/diffview.nvim"
+
+use "NlGHT/vim-eel"
+
+-- use({
+--   "jackMort/ChatGPT.nvim",
+--     config = function()
+--       require("chatgpt").setup()
+--     end,
+--     requires = {
+--       "MunifTanjim/nui.nvim",
+--       "nvim-lua/plenary.nvim",
+--       "nvim-telescope/telescope.nvim"
+--     }
+-- })
+
+use {
+  'Exafunction/codeium.vim',
+  config = function ()
+    -- Change '<C-g>' here to any keycode you like.
+    vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+    vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+    vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+    vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+  end
+}
+
+-- use 'David-Kunz/gen.nvim'
+--
+
+
 
 end)

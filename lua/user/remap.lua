@@ -16,12 +16,10 @@ vim.keymap.set("n", "<leader>-", "<C-x>")
 
 vim.keymap.set("n", "<leader>[", "<cmd>bprevious<cr>")
 vim.keymap.set("n", "<leader>]", "<cmd>bnext<cr>")
+vim.keymap.set("n", "<C-9>", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "<C-0>", "<cmd>bnext<cr>")
 
 vim.keymap.set("n", "<leader>/", function()
-  require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
-end)
-
-vim.keymap.set("v", "<leader>/", function()
   require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
 end)
 
